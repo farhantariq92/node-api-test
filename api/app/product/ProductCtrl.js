@@ -9,6 +9,7 @@ class ProductCtrl {
             const products = await ProductHandler.getAllProducts();
 
             res.status(200).json({
+                success: true,
                 products
             });
 

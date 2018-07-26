@@ -22,4 +22,4 @@ class ProductHandler {
 
 }
 
-module.export = ProductHandler;
+module.exports = ProductHandler;
