@@ -1,25 +1,24 @@
 const Product = require('./Product');
 
-
 class ProductHandler {
 
-    static async getAllProducts () {
+  static async getAllProducts () {
 
-        return Product.find().lean().exec();
+    return Product.find().lean().exec();
 
-    }
+  }
 
-static async createProduct(name, price, productImage) {
+  static async createProduct (name, price, productImage) {
 
-        const product = new Product({
-            name,
-            price,
-            productImage
-        });
+    const product = new Product({
+      name,
+      price,
+      productImage
+    });
 
-        return product.save();
+    return product.save();
 
-    }
+  }
 
 }
 
