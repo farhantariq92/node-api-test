@@ -27,9 +27,12 @@ class ProductCtrl {
 
     static async createProduct (req, res) {
 
+
+        console.log(req.file);
+
         try {
 
-            const product = await ProductHandler.createProduct(req.body.name, req.body.price);
+            const product = await ProductHandler.createProduct(req.body.name, req.body.price, req.file.path);
 
             res.status(200).json({
                 success: true,
@@ -46,7 +49,7 @@ class ProductCtrl {
             });
 
         }
-    }
+    } 
 
 }
 

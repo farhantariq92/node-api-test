@@ -9,11 +9,12 @@ class ProductHandler {
 
     }
 
-    static async createProduct(name, price) {
+static async createProduct(name, price, productImage) {
 
         const product = new Product({
             name,
-            price
+            price,
+            productImage
         });
 
         return product.save();
