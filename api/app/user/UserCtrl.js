@@ -67,7 +67,7 @@ class UserCtrl {
         email: user.email,
         userId: user._id
       },
-      "secret",
+      'secret',
       {
         expiresIn: "1h"
       }

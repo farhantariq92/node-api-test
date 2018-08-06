@@ -4,21 +4,21 @@ const jwt = require('jsonwebtoken');
 
 class CheckAuth {
 
-  static async verifyToken (req, res) {
+  static verifyToken (req, res, next) {
 
     try {
 
-    let token = req.headers.token;
+      let token = req.headers.token;
 
-    let decoded = jwt.verify(token, 'secret');
+      let decoded = jwt.verify(token, 'secret');
 
-    req.user = decoded;
+      req.user = decoded;
 
-    next();
+      next();
 
     } catch(err) {
 
-      res.status(409).json({
+      return res.status(409).json({
         message: 'Auth failed'
       });
 
@@ -29,3 +29,25 @@ class CheckAuth {
 }
 
 module.exports = CheckAuth;
+
+// module.exports = (req, res, next) => {
+
+//   try {
+
+//     let token = req.headers.token;
+
+//     let decoded = jwt.verify(token, 'secret');
+
+//     req.user = decoded;
+
+//     next();
+
+//   } catch(err) {
+
+//     return res.status(409).json({
+//       message: 'Auth failed'
+//     });
+
+//   }
+
+// }
