@@ -1,6 +1,9 @@
 const product = require('./product');
+const user = require('./user');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
+const checkAuth = require('../app/middleware/checkAuth');
 
 const routes = (app) => {
 
@@ -24,11 +27,15 @@ const routes = (app) => {
 
   });
 
+  app.use('/api/v1', user);
+
+  app.use(checkAuth.verifyToken);
+
   app.use('/api/v1', product);
 
   app.use((req, res, next) => {
 
-    const error = new Error('Not Found');
+    const error = new Error('Invalid Api end point');
     error.status = 404;
     next(error);
 
